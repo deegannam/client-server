@@ -4,11 +4,11 @@ services:
     image: mongo:latest
     ports:
       - 27017
-  server:
-    build:
-      context: ./server
-    ports:
-      - 3000:3000
+  #server:
+   #build:
+    #  context: ./server
+    #ports:
+     # - 3000:3000
   movie:
     build:
       context: ./client-master
