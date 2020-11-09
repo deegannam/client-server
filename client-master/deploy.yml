@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: 2
+  template: # template for the pods
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        image: nagamalli/ngclient:v0.1
+        imagePullPolicy: Never
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
